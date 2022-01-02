@@ -11,7 +11,6 @@ route.route('/users').get((req, res)=>{
                    .then(user => res.status(200).json(user))
                    .catch(err => res.status(500).json(err))
 }).post((req, res)=>{
-
     const { existsOrError } = validation
 
     const encryptPassword = pass => {
