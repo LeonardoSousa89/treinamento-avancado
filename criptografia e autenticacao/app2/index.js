@@ -22,7 +22,24 @@ app.post('/users',async(req,res)=>{
                     password: hashedPassword 
                 }
         users.push(user)
-        res.status(201).send('usuário criado com sucesso!')
+        res.status(201).send('Usuário criado com sucesso.')
+    }catch(msg){
+        res.status(500).send(msg)
+    }
+})
+
+app.post('/users/login', async(req, res)=>{
+    const user = users.find(user => user.name === req.body.name)
+    if(user === null) {
+        res.status(400).send('Usuário não encontrado.')
+    }
+
+    try{
+        if(await bcrypt.compare(req.body.password, user.password)){
+            res.send(`Seja bem vindo ${user.name}!`)
+        }else{
+            res.send(`Usuário não autorizado.`)
+        }
     }catch(msg){
         res.status(500).send(msg)
     }
