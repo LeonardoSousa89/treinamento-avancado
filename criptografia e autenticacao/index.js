@@ -14,8 +14,15 @@ app.get('/users',(req,res)=>{
     return res.status(200).json(users)
 })
 
-app.post('/users',(req,res)=>{
-    
+app.post('/users',async(req,res)=>{
+    try{
+        const hashedPassword = await bcrypt.hash(req.body.password, 10)
+        const user           = { name: req.body.name, password: hashedPassword }
+        users.push(user)
+        res.status(201).send('usuário criado com sucesso!')
+    }catch(msg){
+        res.status(500).send(msg)
+    }
 })
 
 app.listen(_PORT,()=>{
