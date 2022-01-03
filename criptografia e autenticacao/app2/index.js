@@ -17,7 +17,10 @@ app.get('/users',(req,res)=>{
 app.post('/users',async(req,res)=>{
     try{
         const hashedPassword = await bcrypt.hash(req.body.password, 10)
-        const user           = { name: req.body.name, password: hashedPassword }
+        const user = { 
+                    name: req.body.name, 
+                    password: hashedPassword 
+                }
         users.push(user)
         res.status(201).send('usuário criado com sucesso!')
     }catch(msg){
