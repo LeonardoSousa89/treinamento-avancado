@@ -3,8 +3,12 @@ $white:white;
 $red:darkred;
 $blue:darkblue;
 $gold:gold;
+$pink:pink;
+$dark:black;
+$yellow:yellow;
 $hide:hidden;
 $zero:0;
+$pad:5px;
 
 @mixin border($type,$frame,$board){
     border:$type $frame $board;
@@ -38,27 +42,88 @@ body{
         .container{
             @include border(solid, 1px, red);
             @include size(100vh,100vw);
-            @include d_grid(grid,1fr,20% 60% 20%,
+            @include d_grid(grid,1fr,20% 46% 34%,
                             'header header'
                             'main     main'
                             'footer footer');
-
-                            //parei aqui
-                            
                 .header{
+                    background-color:$blue;
+                    padding:$pad;
                     @include border(solid, 1px, red);
                     @include grid_area(header);
-                    background-color:$blue;
+                    @include d_grid(grid,1fr 1fr,50% 50%, 
+                                    'el1 el2'
+                                    'el1 el2');
+                    .container-el1{
+                        background-color:$yellow;
+                        color:$blue;
+                        padding:$pad;
+                        @include border(solid, 1px, red);
+                        @include grid_area(el1);
+                    }
+                    .container-el2{
+                        background-color:$pink;
+                        color:$blue;
+                        padding:$pad;
+                        @include border(solid, 1px, red);
+                        @include grid_area(el2);
+                    }
+                    @media screen and (max-width:760px) {
+                        @include d_grid(grid,1fr,50% 50%, 
+                        'el1 el1'
+                        'el2 el2');
+                    }
                 }
                 .main{
+                    background-color:$red;
                     @include border(solid, 1px, red);
                     @include grid_area(main);
-                    background-color:$red;
+                    @include d_grid(grid,25% 25% 25% 25%,
+                                         1fr,
+                                         'mel1 mel2 mel3 mel4');
+                    .container-main-el1,
+                    .container-main-el2,
+                    .container-main-el3,
+                    .container-main-el4{
+                        background-color:$dark;
+                        padding:$pad;
+                        margin:$pad;
+                        @include border(solid,5px,red);
+                    }
+                    .container-main-el1{
+                        @include grid_area(mel1);
+                    }
+                    .container-main-el2{
+                        @include grid_area(mel2);
+                    }
+                    .container-main-el3{
+                        @include grid_area(mel3);
+                    }
+                    .container-main-el4{
+                        @include grid_area(mel4);
+                    }
+                    @media screen and (max-width:760px) {
+                        @include d_grid(grid,1fr 1fr,
+                                            50% 50%,
+                                            'mel1 mel2'
+                                            'mel3 mel4');
+                    }
+                    @media screen and (max-width:599px) {
+                        @include d_grid(grid,1fr,
+                                            1fr 1fr 1fr 1fr,
+                                            'mel1 mel1'
+                                            'mel2 mel2'
+                                            'mel3 mel3'
+                                            'mel4 mel4');
+                    }
                 }
                 .footer{
                     @include border(solid, 1px, red);
                     @include grid_area(footer);
-                    background-color:$gold;
+                    background-color:$dark;
+                    .qr{
+                        @include border(solid,5px,$dark);
+                    }
                 }
         }
 }
