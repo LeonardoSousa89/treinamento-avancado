@@ -11,7 +11,13 @@ server.route('/test-communicate').get((req,res)=>{
       .catch(err => res.status(500).send(err))
 })
 
-server.route('/').get((req,res)=>{
+server.route('/login').post((req,res)=>{
+    return res.json({
+        msg:'login area'
+    })
+})
+
+server.route('/girlfriend').get((req,res)=>{
     db.select('*')
       .table('authdata')
       .then(data => res.status(200).json(data))
@@ -33,7 +39,7 @@ server.route('/').get((req,res)=>{
              .catch(err => res.status(400).send(err))
 })
 
-server.route('/:id').delete((req,res)=>{
+server.route('/girlfriend/:id').delete((req,res)=>{
     const userId = { ...req.params }
 
     return db.where({id: userId.id})
