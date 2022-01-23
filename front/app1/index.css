@@ -1,0 +1,27 @@
+body {
+  margin: 0;
+  background-color: whitesmoke;
+  color: white;
+  border: solid 1px red;
+  height: 100vh;
+  width: 100vw; }
+  body .container {
+    border: solid 1px red;
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 20% 60% 20%;
+    grid-template-areas: "header header" "main     main" "footer footer"; }
+    body .container .header {
+      border: solid 1px red;
+      grid-area: header;
+      background-color: darkblue; }
+    body .container .main {
+      border: solid 1px red;
+      grid-area: main;
+      background-color: darkred; }
+    body .container .footer {
+      border: solid 1px red;
+      grid-area: footer;
+      background-color: gold; }

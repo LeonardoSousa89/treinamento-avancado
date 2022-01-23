@@ -1,0 +1,64 @@
+$background:whitesmoke;
+$white:white;
+$red:darkred;
+$blue:darkblue;
+$gold:gold;
+$hide:hidden;
+$zero:0;
+
+@mixin border($type,$frame,$board){
+    border:$type $frame $board;
+}
+@mixin size($hgt, $wght){
+    height:$hgt;
+    width:$wght;
+}
+@mixin grid_area($area){
+    grid-area:$area;
+}
+@mixin d_grid($display,$columns,$rows,$areas){
+    display:$display;
+    grid-template-columns:$columns;
+    grid-template-rows:$rows;
+    grid-template-areas:$areas;
+}
+@mixin d_flex($display,$direction,$justify,$alignitems){
+    display:$display;
+    flex-direction:$display;
+    justify-content:$justify;
+    align-items:$alignitems;
+}
+
+body{
+    margin:$zero;
+    background-color:$background;
+    color:$white;
+    @include border(solid, 1px, red);
+    @include size(100vh,100vw);
+        .container{
+            @include border(solid, 1px, red);
+            @include size(100vh,100vw);
+            @include d_grid(grid,1fr,20% 60% 20%,
+                            'header header'
+                            'main     main'
+                            'footer footer');
+
+                            //parei aqui
+                            
+                .header{
+                    @include border(solid, 1px, red);
+                    @include grid_area(header);
+                    background-color:$blue;
+                }
+                .main{
+                    @include border(solid, 1px, red);
+                    @include grid_area(main);
+                    background-color:$red;
+                }
+                .footer{
+                    @include border(solid, 1px, red);
+                    @include grid_area(footer);
+                    background-color:$gold;
+                }
+        }
+}
