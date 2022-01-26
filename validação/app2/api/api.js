@@ -6,6 +6,9 @@ const express = require('express')
 
 const server = express.Router()
 
+/*O algoritmo cadastra com sucesso um usuário com senha criptografada, 
+validando os campos
+*/
 server.route('/signup').post((req, res)=>{
     const user = {  ...req.body  }
 
@@ -30,6 +33,7 @@ server.route('/signup').post((req, res)=>{
       .catch(err => res.status(400).send(err))
 })
 
+//O algoritmo busca, encontra e exibe com sucesso um usuário a partir do email
 server.route('/search').post(async(req, res)=>{
     const user = {  ...req.body  }
 
