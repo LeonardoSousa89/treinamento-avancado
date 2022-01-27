@@ -1,15 +1,13 @@
 const db      = require('../db/db')
 const method  = require('../methods/validation')
-const secret  = require('../.env')
 
 const bcrypt  = require('bcrypt')
 const express = require('express')
-const jwt     = require('jwt-simple')
 
 const server  = express.Router()
 
-/*O algoritmo cadastra com sucesso um usuário com senha criptografada, 
-validando os campos
+/*O algoritmo cadastra com sucesso um usuário com 
+senha criptografada, validando os campos
 */
 server.route('/signup').post((req, res)=>{
     const user = {  ...req.body  }
