@@ -8,7 +8,7 @@ const server  = express.Router()
 server.route('/').get((req,res)=>{
 
     var DB = db.db
-    return res.status(200).send(DB)
+    return res.status(200).json(DB)
 
 })
 
@@ -32,11 +32,11 @@ server.route('/create-account').post((req,res)=>{
     var DB = db.method('insert',account)
 
     return res.status(201).send('Data inserted with success.')
-                          .catch(err => res.status(400).send(err))
 
 })
 
 server.route('/get-by-email').get((req,res)=>{
+
     var DB = db.db
     let user = { ...req.body }
 
@@ -46,9 +46,8 @@ server.route('/get-by-email').get((req,res)=>{
     
     if(!find) return res.status(400).send('User not found.')
 
-    return res.status(200).json(find).catch(err => {
-        return res.status(500).send(err)
-    })
+    return res.status(200).json(find)
+
 })
 
 module.exports = server

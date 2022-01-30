@@ -1,6 +1,6 @@
 var db = [] 
 
-function method(opt,data,email) {
+function method(opt,data) {
     
     if (opt === 'insert'){
         if(data === '' || data === null || !data) {
@@ -10,16 +10,6 @@ function method(opt,data,email) {
 
         const insert = db.push(data)
         return insert
-     }
-
-     if(opt === 'delete'){
-         if(email === '' || email === null || !email){
-            db = db
-            return db
-         }
-
-         const remove = db.splice(email,1)
-         return remove
      }
 
 }
