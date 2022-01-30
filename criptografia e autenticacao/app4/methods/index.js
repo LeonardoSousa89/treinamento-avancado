@@ -1,6 +1,6 @@
 var db = [] 
 
-function method(opt,data) {
+function method(opt,data,id) {
     
     if (opt === 'insert'){
         if(data === '' || data === null || !data) {
@@ -11,7 +11,6 @@ function method(opt,data) {
         const insert = db.push(data)
         return insert
      }
-
 }
 
 module.exports = { method, db }

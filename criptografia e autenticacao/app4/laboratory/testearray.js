@@ -1,9 +1,9 @@
 let data = []
 
-data.push({ email: 'mendesdev@aws.com' ,password:'254as65d6a' })
-data.push({ email: 'leonardsolutis@aws.com' ,password:'54as64dasd' })
-data.push({ email: 'killgrave@marvel.com.org' ,password:'1234' })
-data.push({ email: 'tyrel@hbo.com.org' ,password:'12345' })
+data.push({ id: 0, email: 'mendesdev@aws.com' ,password:'254as65d6a' })
+data.push({ id: 1, email: 'leonardsolutis@aws.com' ,password:'54as64dasd' })
+data.push({ id: 2, email: 'killgrave@marvel.com.org' ,password:'1234' })
+data.push({ id: 3, email: 'tyrel@hbo.com.org' ,password:'12345' })
 
 let user = 'killgrave@marvel.com.org'
 
@@ -28,4 +28,6 @@ function search(user) {
 console.log(search('killgrave@marvelas.com.org'))
 
 
-
+/** ============================================================================ */
+data.splice(3,1)
+console.log(data)

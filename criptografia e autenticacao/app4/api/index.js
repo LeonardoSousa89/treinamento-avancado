@@ -22,6 +22,7 @@ server.route('/create-account').post((req,res)=>{
     }
     
     const account = {
+        id: user.id,
         name: user.name,
         email: user.email,
         password: user.password
@@ -47,6 +48,21 @@ server.route('/get-by-email').get((req,res)=>{
     if(!find) return res.status(400).send('User not found.')
 
     return res.status(200).json(find)
+
+})
+
+server.route('/delete/:id').delete((req,res)=>{
+
+    var DB = db.db
+    let user = { ...req.params }
+
+    const deletById = DB.findIndex(find => find.id === user.id)
+      
+    if(deletById < 0) return res.status(404).json({msg:'User not found!'})
+
+    DB.splice(deletById,1)
+    
+    return res.status(204).send()
 
 })
 
