@@ -13,4 +13,8 @@ function method(opt,data,id) {
      }
 }
 
-module.exports = { method, db }
+function validate(data, msg){
+    if(!data) throw msg
+}
+
+module.exports = { method, validate , db }

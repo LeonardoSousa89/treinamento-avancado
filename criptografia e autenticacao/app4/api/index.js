@@ -12,6 +12,7 @@ server.route('/').get((req,res)=>{
 
 })
 
+/**the creation of account */
 server.route('/create-account').post((req,res)=>{
 
     const user = { ...req.body }
@@ -21,6 +22,15 @@ server.route('/create-account').post((req,res)=>{
         return bcrypt.hashSync(password,salt)
     }
     
+    try{
+        db.validate(user.id, 'Id not inserted.')
+        db.validate(user.name, 'name not inserted.')
+        db.validate(user.email, 'email not inserted.')
+        db.validate(user.password, 'password not inserted.')
+    }catch(err){
+        return res.status(400).send(err)
+    }
+
     const account = {
         id: user.id,
         name: user.name,
@@ -30,12 +40,13 @@ server.route('/create-account').post((req,res)=>{
 
     account.password = encryptPassword(account.password)
 
-    var DB = db.method('insert',account)
+    db.method('insert',account)
 
     return res.status(201).send('Data inserted with success.')
 
 })
 
+/**get user of account by email */
 server.route('/get-by-email').get((req,res)=>{
 
     var DB = db.db
@@ -51,6 +62,7 @@ server.route('/get-by-email').get((req,res)=>{
 
 })
 
+/**removing user of account by id */
 server.route('/delete/:id').delete((req,res)=>{
 
     var DB = db.db
