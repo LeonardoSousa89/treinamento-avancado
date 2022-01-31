@@ -2,11 +2,7 @@
    "id":"0",
     "name":"Mendes Santos Sousa",
     "email":"leoeternoamante@awsapi.com",
-    "password":"123456",
-        "userData":{
-            "exgirlfriend":"Luana Alves Domingos",
-            "yearofmeeting":"2009"
-        }
+    "password":"123456"
 },{
     "id":"1",
     "name":"Mendes Santos",
@@ -16,18 +12,10 @@
     "id":"2",    
     "name":"Leonardo Sousa",
     "email":"leoeternoamante4@awsapi.com",
-    "password":"123",
-    "userData":{
-        "exgirlfriend":"Isabela Santana",
-        "yearofmeeting":"2016"
-    }
+    "password":"123"
 },{
     "id":"3",
     "name":"Leonardo Mendes",
     "email":"leoeternoamante2@awsapi.com",
-    "password":"12345",
-    "userData":{
-        "exgirlfriend":"Renata Quiroz",
-        "yearofmeeting":"2012"
-    }
+    "password":"12345"
 }]

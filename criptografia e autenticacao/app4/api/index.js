@@ -135,9 +135,7 @@ server.route('/login').post((req,res)=>{
     })
 
     if(!find) return res.status(400).send('User not found.')
-
-    const userData = user.userData
-    return res.status(200).json({userData})
-
+    /** not finished yet */
+    
 })
 module.exports = server
