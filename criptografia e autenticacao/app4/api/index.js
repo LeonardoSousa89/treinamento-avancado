@@ -121,4 +121,23 @@ server.route('/update/:id').put((req,res)=>{
     return res.status(201).send('Data updated with success.')
 
 })
+
+/**get user data inside your account */
+server.route('/login').post((req,res)=>{
+    var DB = db.db
+    const user = { ...req.body }
+
+    const data = {email: user.email}
+    if(!data) return res.status(400).send('Email not inserted.')
+
+    const find = DB.find(e =>{
+        if(e.email === user.email ) return e
+    })
+
+    if(!find) return res.status(400).send('User not found.')
+
+    const userData = user.userData
+    return res.status(200).json({userData})
+
+})
 module.exports = server

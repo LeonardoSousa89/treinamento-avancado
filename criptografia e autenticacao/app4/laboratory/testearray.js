@@ -31,3 +31,27 @@ console.log(search('killgrave@marvelas.com.org'))
 /** ============================================================================ */
 data.splice(3,1)
 console.log(data)
+
+
+/** ============================================================================ */
+const Mendes =  { id: 0,
+                   name:"Mendes Santos Sousa",
+                   email:"leoeternoamante@awsapi.com",
+                   password:123456,
+                        userData:{
+                            exgirlfriend:"Luana Alves Domingos",
+                            yearofmeeting:2009
+    }}
+
+    const Leonardo =  { id: 1,
+        name:"Leonardo Sousa",
+        email:"leoeternoamante4@awsapi.com",
+        password:123,
+             userData:{
+                 exgirlfriend:"Isabela Santana",
+                 yearofmeeting:2016
+}}
+
+
+console.log(Mendes.userData)
+console.log(Leonardo.userData)
