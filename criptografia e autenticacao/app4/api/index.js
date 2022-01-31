@@ -71,12 +71,13 @@ server.route('/delete/:id').delete((req,res)=>{
 
     const deletById = DB.findIndex(find => find.id === user.id)
       
-    if(deletById < 0) return res.status(404).json({msg:'User not found!'})
+    if(deletById < 0) return res.status(400).json({msg:'User not found!'})
 
     DB.splice(deletById,1)
     
     return res.status(204).send()
 
 })
+
 
 module.exports = server
