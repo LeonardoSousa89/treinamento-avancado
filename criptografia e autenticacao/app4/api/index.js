@@ -79,5 +79,46 @@ server.route('/delete/:id').delete((req,res)=>{
 
 })
 
+/**update user of account by id */
+server.route('/update/:id').put((req,res)=>{
 
+    var DB = db.db
+
+    const user   = { ...req.body }
+    const userId =  { ...req.params }
+
+    const deletById = DB.findIndex(find => find.id === userId.id)
+      
+    if(deletById < 0) return res.status(400).json({msg:'User not found!'})
+
+    DB.splice(deletById,1)
+
+    const encryptPassword = password => {
+        const salt = bcrypt.genSaltSync(10)
+        return bcrypt.hashSync(password,salt)
+    }
+    
+    try{
+        db.validate(user.id, 'Id not inserted.')
+        db.validate(user.name, 'Name not inserted.')
+        db.validate(user.email, 'Email not inserted.')
+        db.validate(user.password, 'Password not inserted.')
+    }catch(err){
+        return res.status(400).send(err)
+    }
+
+    const account = {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        password: user.password
+    }
+
+    account.password = encryptPassword(account.password)
+
+    db.method('insert',account)
+
+    return res.status(201).send('Data updated with success.')
+
+})
 module.exports = server
