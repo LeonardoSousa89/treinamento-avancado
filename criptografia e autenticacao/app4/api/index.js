@@ -25,9 +25,9 @@ server.route('/create-account').post((req,res)=>{
     
     try{
         db.validate(user.id, 'Id not inserted.')
-        db.validate(user.name, 'name not inserted.')
-        db.validate(user.email, 'email not inserted.')
-        db.validate(user.password, 'password not inserted.')
+        db.validate(user.name, 'Name not inserted.')
+        db.validate(user.email, 'Email not inserted.')
+        db.validate(user.password, 'Password not inserted.')
     }catch(err){
         return res.status(400).send(err)
     }
