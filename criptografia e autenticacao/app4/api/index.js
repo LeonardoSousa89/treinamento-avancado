@@ -5,6 +5,7 @@ const express = require('express')
 
 const server  = express.Router()
 
+/**get user */
 server.route('/').get((req,res)=>{
 
     var DB = db.db
@@ -12,7 +13,7 @@ server.route('/').get((req,res)=>{
 
 })
 
-/**the creation of account */
+/**creation of account */
 server.route('/create-account').post((req,res)=>{
 
     const user = { ...req.body }
