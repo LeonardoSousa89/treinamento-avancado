@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://allfont.net/allfont.css?fonts=star-jedi" rel="stylesheet" type="text/css" />
+   <style>
+       /* media querie não está funcionando. */
+       /* @media screen and (device-width:640px) and (orientation:landscape){
+            body{
+                background-color:#AB1822;
+            }
+       } */
+       body{
+            font-family: 'Star Jedi', arial;
+            text-shadow: 0px 0px 3px yellow;
+            background-color: rgba(0, 0, 0, 0.9);
+            margin:0;
+            width:100vw;
+            height:100vh;
+            overflow:hidden;
+            display:flex;
+            flex-direction:row;
+            justify-content:center;
+            align-items:center;
+    }
+       .container{
+            width:60vw;
+            height:85vh;
+            border-radius:6px;
+            box-shadow:0px 0px 6px goldenrod;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 1);
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+            overflow:hidden;
+    }
+    .title{
+            color:rgba(0, 0, 0, 1);
+            font-size: 50px;
+    }
+    .title:hover{
+           text-shadow: 0px 0px 4px yellow;
+    }
+    #email, #pass{
+            outline:0.5px solid goldenrod;
+            margin-bottom:7px;
+            padding:10px;
+            width:80%;
+    }
+    #email:hover{
+            outline:2px solid goldenrod;
+    }
+    #pass:hover{
+            outline:2px solid goldenrod;
+    }
+    #login{
+        background-color:#AB1822;
+        border-radius:6px;
+        overflow-y: hidden;
+        margin-top: 20px;
+        cursor: pointer;
+        font-size:large;
+        padding:5px;
+        border:none;
+        width:84%;
+        color:goldenrod;
+    }
+    #login:hover{
+        background-color:#6B0F15;
+    }
+   </style>
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Login</h1>
+        <input type="email" id="email">
+        <input type="password" id="pass">
+        <button id="login" onclick="login(Event)">enter</button>
+    </div>
+
+    <script>
+        function token(pass){
+            let key = localStorage.setItem('KEY', pass)
+        }
+
+        function login(){
+            const urlApp  = 'http://192.168.100.20:3000/app' || 'http://localhost:3000/app'
+            const urlPost = 'http://192.168.100.20:8081/login'
+
+            let email = document.getElementById('email').value
+            let pass  = document.getElementById('pass').value
+
+            const data   = { email, pass }
+            const config = {
+                        method:'POST',
+                        body: JSON.stringify(data),
+                        headers :{
+                            'Content-Type':'application/json'
+                }   
+            }
+
+            fetch(urlPost, config)
+                .then(response => {
+                    if(response.ok) {
+                        token(data.pass)
+                        document.location.href = urlApp
+                    }else{
+                        alert('STATUS CODE:' + response.status + ',' + response.statusText)
+                        console.log('STATUS CODE:' + response.status + ',' + response.statusText)
+                    }
+                })
+                .catch(err => alert(err))
+        }   
+    </script>
+</body>
+</html>
+
+<!-- amantedepiza@aws.com , 123 -->

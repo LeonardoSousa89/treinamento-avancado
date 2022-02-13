@@ -1,0 +1,84 @@
+body {
+  margin: 0;
+  background-color: whitesmoke;
+  color: white;
+  border: solid 1px red;
+  height: 100vh;
+  width: 100vw; }
+  body .container {
+    border: solid 1px red;
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 20% 46% 34%;
+    grid-template-areas: "header header" "main     main" "footer footer"; }
+    body .container .header {
+      background-color: darkblue;
+      padding: 5px;
+      border: solid 1px red;
+      grid-area: header;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 50% 50%;
+      grid-template-areas: "el1 el2" "el1 el2"; }
+      body .container .header .container-el1 {
+        background-color: yellow;
+        color: darkblue;
+        padding: 5px;
+        border: solid 1px red;
+        grid-area: el1; }
+      body .container .header .container-el2 {
+        background-color: pink;
+        color: darkblue;
+        padding: 5px;
+        border: solid 1px red;
+        grid-area: el2; }
+      @media screen and (max-width: 760px) {
+        body .container .header {
+          display: grid;
+          grid-template-columns: 1fr;
+          grid-template-rows: 50% 50%;
+          grid-template-areas: "el1 el1" "el2 el2"; } }
+    body .container .main {
+      background-color: darkred;
+      border: solid 1px red;
+      grid-area: main;
+      display: grid;
+      grid-template-columns: 25% 25% 25% 25%;
+      grid-template-rows: 1fr;
+      grid-template-areas: "mel1 mel2 mel3 mel4"; }
+      body .container .main .container-main-el1,
+      body .container .main .container-main-el2,
+      body .container .main .container-main-el3,
+      body .container .main .container-main-el4 {
+        background-color: black;
+        padding: 5px;
+        margin: 5px;
+        border: solid 5px red; }
+      body .container .main .container-main-el1 {
+        grid-area: mel1; }
+      body .container .main .container-main-el2 {
+        grid-area: mel2; }
+      body .container .main .container-main-el3 {
+        grid-area: mel3; }
+      body .container .main .container-main-el4 {
+        grid-area: mel4; }
+      @media screen and (max-width: 760px) {
+        body .container .main {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          grid-template-rows: 50% 50%;
+          grid-template-areas: "mel1 mel2" "mel3 mel4"; } }
+      @media screen and (max-width: 599px) {
+        body .container .main {
+          display: grid;
+          grid-template-columns: 1fr;
+          grid-template-rows: 1fr 1fr 1fr 1fr;
+          grid-template-areas: "mel1 mel1" "mel2 mel2" "mel3 mel3" "mel4 mel4"; } }
+    body .container .footer {
+      border: solid 1px red;
+      grid-area: footer;
+      background-color: black; }
+      body .container .footer .qr {
+        border: solid 5px black; }
